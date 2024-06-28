@@ -19,7 +19,7 @@ ruta = 'Inv Marca Categoria.csv'
 #        break
 #    except (UnicodeDecodeError, pd.errors.ParserError) as e:
 #        print(f"fallido: {encoding} - {e}")
-df = pd.read_csv(ruta, delimiter=';')
+df = pd.read_csv(ruta, delimiter='/t')
 
 # Data preprocessing
 df.rename(columns={
