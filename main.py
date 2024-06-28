@@ -42,7 +42,6 @@ def recomendacion(prompt: str, marca: str):
   print(top_matches[['Codigo', 'Existencia', 'Costo']])
   return top_matches[['Codigo', 'Existencia', 'Costo']]
 
-recomendacion('switch poe 16ch', 'HIKVISION')
 
 
 
