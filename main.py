@@ -14,9 +14,9 @@ class RecommendationResponse(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the FastAPI application"}
+    return {"message": "La APi funciona"}
 
-@app.get("/recomendacion", response_model=List[RecommendationResponse])
+@app.get("/recomendacion")
 def recomendacion(prompt: str, marca: str):
     try:
         df = pd.read_csv('Inv Marca Categoria.csv')
