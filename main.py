@@ -14,7 +14,7 @@ app = FastAPI()
 
 @app.get("/especificar solicitud y marca")
 def recomendacion(prompt: str, marca: str):
-  df = pd.read_csv('Inv Marca Categoria.csv', encoding=encoding, delimiter=',')  
+  df = pd.read_csv('Inv Marca Categoria.csv')  
   marca_upper = marca.upper()
   if marca_upper in df['Marca'].values:
     df_temp = df[df['Marca'] == marca.upper()].copy()
