@@ -17,17 +17,18 @@ def read_root():
     return {"message": "La APi funciona"}
 
 @app.get("/recomendacion")
-def recomendacion(prompt: str, marca: str):
+def recomendacion(prompt: str):
     try:
         df = pd.read_csv('Inv Marca Categoria.csv')
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="CSV file not found")
 
-    marca_upper = marca.upper()
-    if marca_upper not in df['Marca'].values:
-        raise HTTPException(status_code=404, detail="Marca not found")
+    #marca_upper = marca.upper()
+    #if marca_upper not in df['Marca'].values:
+    #    raise HTTPException(status_code=404, detail="Marca not found")
     
-    df_temp = df[df['Marca'] == marca_upper].copy()
+    #df_temp = df[df['Marca'] == marca_upper].copy()
+    df_temp = df.copy()
     df_temp['combined_text'] = df_temp['Descripcion'] + ' ' + df_temp['Linea'] + ' ' + df_temp['Clasificacion'] + ' ' + df_temp['Marca']
 
     df_temp['Existencia'] = pd.to_numeric(df_temp['Existencia'], errors='coerce')
