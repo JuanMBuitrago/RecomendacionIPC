@@ -12,7 +12,7 @@ class RecommendationResponse(BaseModel):
     Existencia: int
     Costo: float
 
-@app.get('/recomendacion/{prompt, marca}')
+@app.get("/recomendacion", response_model=List[RecommendationResponse])
 def recomendacion(prompt: str, marca: str):
     try:
         df = pd.read_csv('Inv Marca Categoria.csv')
