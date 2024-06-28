@@ -40,7 +40,8 @@ for col in ['Codigo', 'Descripcion', 'Linea', 'Clasificacion', 'Marca']:
 df.head()
 
 df = df.groupby('Codigo').sum()
-df.drop(columns= ['Bodega', 'Unnamed: 8'], inplace=True)
+#df.drop(columns= ['Bodega', Unnamed: 8'], inplace=True)
+df.drop(columns= ['Bodega'], inplace=True)
 
 df['Codigo'] = df.index
 
