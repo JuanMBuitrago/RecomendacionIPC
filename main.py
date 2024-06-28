@@ -7,25 +7,13 @@ Original file is located at
     https://colab.research.google.com/drive/1ldhrxNURVJD2IgdqGILp7kCjo_maLh2N
 """
 
-
-
-!pip install fastapi
-
-import os
 from fastapi import FastAPI
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from google.colab import drive
-
-drive.mount('/content/drive')
-
-os.chdir('drive/MyDrive/Raw Data')
-os.getcwd()
-os.listdir()
 
 import pandas as pd
-ruta = 'Inv Marca CAtegoria.csv'
+ruta = 'Inv Marca Categoria.csv'
 encodings = ['utf-8', 'latin1', 'iso-8859-1', 'cp1252']
 
 for encoding in encodings:
