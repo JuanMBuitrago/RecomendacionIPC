@@ -16,13 +16,14 @@ import pandas as pd
 ruta = 'Inv Marca Categoria.csv'
 encodings = ['utf-8', 'latin1', 'iso-8859-1', 'cp1252']
 
-for encoding in encodings:
-    try:
-        df = pd.read_csv(ruta, encoding=encoding, delimiter=';')
+#for encoding in encodings:
+#    try:
+        #df = pd.read_csv(ruta, encoding=encoding, delimiter=';')
         #print(f"correcto: {encoding}")
-        break
-    except (UnicodeDecodeError, pd.errors.ParserError) as e:
-        print(f"fallido: {encoding} - {e}")
+#        break
+#    except (UnicodeDecodeError, pd.errors.ParserError) as e:
+#        print(f"fallido: {encoding} - {e}")
+df = pd.read_csv(ruta)
 df.rename(columns=({'Referencia': 'Codigo', 'Cant. disponible': 'Existencia', 'Notas ítem': 'Descripcion', 'LINEA DE NEGOCIO': 'Linea',
                     'CLASIFICACION': 'Clasificacion', 'MARCA': 'Marca', 'Costo prom. tot. (ins)': 'Costo'}),inplace=True)
 df['Marca'] = df['Marca'].str[7:].str.strip()
