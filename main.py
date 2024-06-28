@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 app = FastAPI()
 
-@app.get("/especificar solicitud y marca", response_model=List[RecommendationResponse])
+@app.get("/especificar solicitud y marca")
 def recomendacion(prompt: str, marca: str):
   marca_upper = marca.upper()
   if marca_upper in df['Marca'].values:
