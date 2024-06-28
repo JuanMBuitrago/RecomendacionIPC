@@ -11,15 +11,15 @@ app = FastAPI()
 ruta = 'Inv Marca Categoria.csv'
 #encodings = ['utf-8', 'latin1', 'iso-8859-1', 'cp1252']
 
-for encoding in encodings:
-    try:
+#for encoding in encodings:
+#    try:
         #df = pd.read_csv(ruta, encoding=encoding, delimiter=';')
-        df = pd.read_csv(ruta, delimiter=';')
-        #print(f"correcto: {encoding}")
-        break
-    except (UnicodeDecodeError, pd.errors.ParserError) as e:
-        print(f"fallido: {encoding} - {e}")
-        df = pd.read_csv(ruta, delimiter=';')
+#        df = pd.read_csv(ruta, delimiter=';')
+ #       #print(f"correcto: {encoding}")
+#        break
+#    except (UnicodeDecodeError, pd.errors.ParserError) as e:
+#        print(f"fallido: {encoding} - {e}")
+df = pd.read_csv(ruta, delimiter=';')
 
 # Data preprocessing
 df.rename(columns={
