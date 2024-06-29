@@ -52,9 +52,8 @@ async def read_root():
 
 app = FastAPI()
 
-#@app.get("/")
-#async
-#def recomendacion(prompt: str, marca: str):}
+
+@app.get("/especificar_solicitud")
 def recomendacion(prompt: str):
 #  marca_upper = marca.upper()
 #  if marca_upper in df['Marca'].values:
