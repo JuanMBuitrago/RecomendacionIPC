@@ -26,9 +26,7 @@ for encoding in encodings:
 df.rename(columns=({'Referencia': 'Codigo', 'Cant. disponible': 'Existencia', 'Notas ítem': 'Descripcion', 'LINEA DE NEGOCIO': 'Linea',
                     'CLASIFICACION': 'Clasificacion', 'MARCA': 'Marca', 'Costo prom. tot. (ins)': 'Costo'}),inplace=True)
 df['Marca'] = df['Marca'].str[7:].str.strip()
-print(df.head())
 
-df['Marca'].unique()
 
 df['Existencia'] = pd.to_numeric(df['Existencia'],errors='coerce')
 remplazo = {r'\$': '', r'\,': ''}
@@ -45,12 +43,6 @@ df = df.groupby('Codigo').sum()
 
 df['Codigo'] = df.index
 
-from google.colab import files
-#df.head()
-df.to_csv('data.csv', index=False)
-
-# Download the CSV file
-files.download('data.csv')
 
 app = FastAPI()
 
@@ -91,22 +83,3 @@ def recomendacion(prompt: str):
       #print(f"Productos sugueridos (w = {w}):")
   return top_matches[['Codigo', 'Existencia', 'Costo']]
 
-
-
-from collections import Counter
-import re
-all_notes = ' '.join(df['Descripcion'])
-words = re.findall(r'\b\w+\b', all_notes.lower())
-word_counts = Counter(words)
-most_common_words = word_counts.most_common()
-for word, count in most_common_words:
-    print(f"{word}: {count}")
-
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
